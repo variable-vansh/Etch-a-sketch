@@ -68,9 +68,14 @@ resizeButton.addEventListener("click", resize)
 
 //event handler for resize button click
 function resize() {
-    nSide = prompt("you clicked the resize button")
-    totalBoxes = nSide * nSide;
-    createMatrix(totalBoxes);
+    nSide = prompt("How many pixels per row do you want?")
+    if (nSide <= 100) {
+        totalBoxes = nSide * nSide;
+        createMatrix(totalBoxes);
+    } else {
+        nSide = prompt("cannot exceed 100")
+    }
+
 }
 
 // responsible to change color of small box when cursor hovers over it
