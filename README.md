@@ -10,4 +10,6 @@ A step by step plan:
 -   add hover functionality
 -------------------------------------
 -   make the reset button work
--   add some more CSS
+-   randomize square color
+-------------------------------------
+-   when mouse hovered over a square, it is darkened only 10%, the square is completely darkened on 10 passes

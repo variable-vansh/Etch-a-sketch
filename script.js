@@ -14,6 +14,8 @@ container.style.flexWrap = "wrap"
 let nSide = 16;
 let totalBoxes;
 let smallBoxWidth;
+let r, g, b;
+let color = "black";
 
 basicCalculation();
 createMatrix(totalBoxes)
@@ -32,8 +34,16 @@ function createOneSmallBox() {
     let innerBox = document.createElement("div");
     innerBox.classList.add("smallBox");
     innerBox.addEventListener("mouseover", function () {
-        hoverChange(innerBox)
+        chooseColor();
     })
+
+    function chooseColor() {
+        if (color == "black") {
+            hoverChange(innerBox)
+        } else {
+            nowRandomColor(innerBox)
+        }
+    }
 
     // innerBox.style.border = "solid";
     // innerBox.style.borderColor = "Black";
@@ -47,6 +57,7 @@ function createOneSmallBox() {
 
     container.append(innerBox)
 }
+
 
 //creates required number of small boxes
 //counts
@@ -78,7 +89,31 @@ function resize() {
 
 }
 
+//generates random color to be used
+randomColor()
+
 // responsible to change color of small box when cursor hovers over it
 function hoverChange(innerBox) {
-    innerBox.style.backgroundColor = "black"
+    innerBox.style.backgroundColor = `black`
 }
+
+//re-creates the entire matrix
+function reset() {
+    createMatrix(totalBoxes);
+    color = "black"
+}
+
+function nowRandomColor(innerBox) {
+    randomColor()
+    color = "random";
+    innerBox.style.backgroundColor = `rgb(${r},${g},${b})`
+}
+
+//generates random color
+function randomColor() {
+    r = Math.floor((Math.random() * 255)) + 1;
+    g = Math.floor((Math.random() * 255)) + 1;
+    b = Math.floor((Math.random() * 255)) + 1;
+}
+
+
