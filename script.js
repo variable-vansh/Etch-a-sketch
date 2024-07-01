@@ -1,5 +1,8 @@
 const container = document.querySelector("#container");
-container.style.backgroundColor = "red";
+// container.style.backgroundColor = "red";
+container.style.border = "solid";
+container.style.borderColor = "black";
+container.style.borderWidth = "10px";
 
 //set size and flex properties to big box
 container.style.width = "600px"
@@ -28,10 +31,13 @@ function createOneSmallBox() {
     basicCalculation();
     let innerBox = document.createElement("div");
     innerBox.classList.add("smallBox");
+    innerBox.addEventListener("mouseover", function () {
+        hoverChange(innerBox)
+    })
 
-    innerBox.style.border = "solid";
-    innerBox.style.borderColor = "Black";
-    innerBox.style.borderWidth = 10
+    // innerBox.style.border = "solid";
+    // innerBox.style.borderColor = "Black";
+    // innerBox.style.borderWidth = 1
 
     innerBox.style.height = `${smallBoxWidth}px`
     innerBox.style.width = `${smallBoxWidth}px`
@@ -56,13 +62,18 @@ function createMatrix(totalBoxes) {
     console.log(`The small box has a side length of ${smallBoxWidth}`)
 }
 
+//query selector to address resize buttons
 const resizeButton = document.querySelector("#resize");
 resizeButton.addEventListener("click", resize)
-
 
 //event handler for resize button click
 function resize() {
     nSide = prompt("you clicked the resize button")
     totalBoxes = nSide * nSide;
     createMatrix(totalBoxes);
+}
+
+// responsible to change color of small box when cursor hovers over it
+function hoverChange(innerBox) {
+    innerBox.style.backgroundColor = "black"
 }
